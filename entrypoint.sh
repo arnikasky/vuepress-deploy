@@ -19,8 +19,6 @@ cd $BUILD_DIR
 
 echo "$(pwd)"
 
-git config --global --add safe.directory "*"
-
 # Get respository
 if [[ -z "$TARGET_REPO" ]]; then
   REPOSITORY_NAME="${GITHUB_REPOSITORY}"
@@ -42,8 +40,6 @@ if [ "$TARGET_LINK" ]; then
 fi
 
 echo "==> Prepare to deploy"
-
-# git config --global --add safe.directory "/github/workspace/docs/.vuepress/dist/"
 
 git init
 git config user.name "${GITHUB_ACTOR}"
