@@ -52,26 +52,3 @@ if [ -z "$(git status --porcelain)" ]; then
     echo "Exiting..."
     exit 0
 fi
-
-# Generate a CNAME file
-if [ "$CNAME" ]; then
-  echo "Generating a CNAME file..."
-  echo $CNAME > CNAME
-fi
-
-echo "==> Starting deploying"
-
-# Final repository
-if [[ -z "$COMMIT_MESSAGE" ]]; then
-  COMMIT_MESSAGE="Auto deploy from Github Actions"
-fi
-
-git add .
-git commit -m "$COMMIT_MESSAGE"
-git push --force $DEPLOY_REPO master:$DEPLOY_BRAN
-rm -fr .git
-
-cd $GITHUB_WORKSPACE
-
-echo "Successfully deployed!" && \
-echo "See: https://github.com/$REPOSITORY_NAME/tree/$DEPLOY_BRAN"
