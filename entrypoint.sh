@@ -2,10 +2,6 @@
 
 set -e
 
-git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-
-cd "${GITHUB_WORKSPACE}" || exit
-
 echo ''
 
 # env
@@ -42,6 +38,8 @@ if [ "$TARGET_LINK" ]; then
 fi
 
 echo "==> Prepare to deploy"
+
+git config --global --add safe.directory "/github/workspace/docs/.vuepress/dist/"
 
 git init
 git config user.name "${GITHUB_ACTOR}"
