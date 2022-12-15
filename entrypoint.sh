@@ -43,7 +43,7 @@ fi
 
 echo "==> Prepare to deploy"
 
-git config --global --add safe.directory "/github/workspace/docs/.vuepress/dist/"
+# git config --global --add safe.directory "/github/workspace/docs/.vuepress/dist/"
 
 git init
 git config user.name "${GITHUB_ACTOR}"
